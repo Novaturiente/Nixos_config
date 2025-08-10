@@ -45,7 +45,6 @@
     home-manager
     kdePackages.kdeconnect-kde
     bibata-cursors
-    hyprpanel
     playerctl
     clipman
     wl-clipboard
@@ -100,9 +99,6 @@
   xdg.menus.enable = true;
   xdg.mime.enable = true;
   xdg.portal.enable = true;
-
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
 
   environment.variables = { XDG_MENU_PREFIX = "gnome-"; };
 
