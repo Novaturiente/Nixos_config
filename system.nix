@@ -6,7 +6,6 @@
     ./nvidia.nix
     # ./virtualization.nix
     # ./gaming.nix
-    # ./gnome.nix
   ];
 
   hardware.bluetooth.enable = true;
