@@ -1,17 +1,12 @@
-
-{ config, pkgs, inputs,pkgs-unstable, ... }:
+{ config, pkgs, inputs, pkgs-unstable, ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 3;
-  #boot.kernelPackages = pkgs.linuxPackages_6_13;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   system.nixos.label = "_";
 
@@ -53,10 +48,16 @@
   users.users.nova = {
     isNormalUser = true;
     description = "Nova";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "adbusers" "kvm" "qemu-libvirtd"];
-    shell = pkgs.fish;
-    packages = with pkgs; [
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "libvirtd"
+      "adbusers"
+      "kvm"
+      "qemu-libvirtd"
     ];
+    shell = pkgs.zsh;
   };
 
   programs.fish.enable = true;
@@ -65,15 +66,10 @@
   nixpkgs.config.allowUnfree = true;
 
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    ghostty
-    git
-    pkgs-unstable.neovim
-    firefox
-  ];
+  environment.systemPackages = with pkgs; [ git neovim ];
 
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
-  system.stateVersion = "25.05"; 
+
+  system.stateVersion = "25.05";
 }

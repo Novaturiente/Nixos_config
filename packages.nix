@@ -22,15 +22,7 @@
     p7zip
     vlc
     jq
-
-    # Fish shell
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.hydro
     fzf
-    fishPlugins.grc
-    grc
     zoxide
     eza
 
@@ -46,14 +38,11 @@
     rust-analyzer
     rustfmt
     uv
-
-    firefox
-    geckodriver
   ];
 
   programs.adb.enable = true;
 
-# Gaming setup
+  # Gaming setup
   security.wrappers.fuse = {
     source = "${pkgs.fuse}/bin/fusermount";
     group = "users";

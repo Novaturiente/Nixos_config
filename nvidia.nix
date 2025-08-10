@@ -3,8 +3,8 @@
 {
   # Enable OpenGL
   services.xserver = {
-      enable = true;
-      videoDrivers = [ "nvidia" ];
+    enable = true;
+    videoDrivers = [ "nvidia" ];
   };
 
   hardware = {
@@ -12,7 +12,7 @@
       enable = true;
       enable32Bit = true;
     };
-    
+
     # Load Nvidia driver for Xorg and Wayland
     nvidia = {
       modesetting.enable = true;
@@ -21,8 +21,6 @@
       open = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
-#      package = pkgs-unstable.linuxPackages_6_14.nvidiaPackages.beta;
-      
 
       prime = {
         #sync.enable = true;
@@ -38,8 +36,6 @@
 
   environment.systemPackages = with pkgs; [
     linuxPackages.nvidia_x11
-    cudaPackages.cudatoolkit
-    cudaPackages.cudnn
     virtualgl
     vulkan-tools
     vpl-gpu-rt
